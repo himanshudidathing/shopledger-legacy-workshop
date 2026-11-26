@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">ShopLedger architecture</title>
+  <desc id="desc">The browser UI calls Express routes, which use the domain modules, configuration, and JSON data store. Placing an order uses product lookup, inventory validation, coupon validation, pricing, ledger charging, order creation, audit logging, and data persistence.</desc>
+  <style>
+    text{font-family:Arial,sans-serif;fill:#172033}.heading{font-size:28px;font-weight:700}.label{font-size:18px;font-weight:700}.detail{font-size:14px}.box{stroke:#28646b;stroke-width:2;rx:12}.ui{fill:#e6f7f1}.route{fill:#edf4ff}.lib{fill:#fff6db}.data{fill:#f5edff}.arrow{stroke:#52667a;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+  </style>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#52667a"/></marker></defs>
+  <text x="50" y="48" class="heading">ShopLedger architecture</text>
+  <rect class="box ui" x="50" y="105" width="210" height="120"/><text x="72" y="140" class="label">Browser UI</text><text x="72" y="169" class="detail">public/index.html</text><text x="72" y="193" class="detail">public/js/app.js</text>
+  <rect class="box route" x="355" y="82" width="260" height="215"/><text x="377" y="117" class="label">Express server</text><text x="377" y="148" class="detail">server.js</text><text x="377" y="181" class="detail">routes/products.js</text><text x="377" y="205" class="detail">routes/orders.js</text><text x="377" y="229" class="detail">routes/customers.js</text><text x="377" y="253" class="detail">routes/reports.js</text>
+  <rect class="box lib" x="720" y="75" width="400" height="310"/><text x="742" y="110" class="label">Domain modules in lib/</text><text x="742" y="143" class="detail">pricing.js, tax.js, coupons.js, invoice.js</text><text x="742" y="169" class="detail">inventory.js, orders.js, ledger.js</text><text x="742" y="195" class="detail">reports.js, dates.js, store.js</text><text x="742" y="235" class="label">Order placement flow</text><text x="742" y="263" class="detail">product lookup → inventory check → coupon validation</text><text x="742" y="287" class="detail">→ pricing → Khata charge if selected → order creation</text><text x="742" y="311" class="detail">→ stock reservation → audit log → store.write</text>
+  <rect class="box data" x="795" y="495" width="245" height="105"/><text x="817" y="534" class="label">data/db.json</text><text x="817" y="562" class="detail">products, orders, customers</text>
+  <rect class="box data" x="440" y="495" width="170" height="105"/><text x="462" y="534" class="label">config.js</text><text x="462" y="562" class="detail">GST and coupons</text>
+  <path class="arrow" d="M260 165 H355"/><path class="arrow" d="M615 180 H720"/><path class="arrow" d="M920 385 V495"/><path class="arrow" d="M610 548 H795"/>
+  <text x="278" y="151" class="detail">HTTP</text><text x="638" y="166" class="detail">calls</text><text x="936" y="452" class="detail">read/write</text><text x="644" y="534" class="detail">uses</text>
+</svg>
+
